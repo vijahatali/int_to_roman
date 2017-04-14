@@ -13,18 +13,20 @@ roman[5] = "V"
 roman[4] = "IV"
 roman[1] = "I"
 
+output = ''
+
 def int_to_romen(num):
-	output = ''
-	for key,value in roman.items():
-		if num < key:
-			output += value
-			num -= key
-			b = num
-			int_to_romen(b)
-		elif num >= key:
-			output += value
-			num -= key
-	return output
+    global output
+    for key,value in roman.items():
+        if num > key:
+            output += value
+            num -= key
+            b = num
+            return int_to_romen(b)
+        elif num >= key:
+            output += value
+            num -= key
+    return output
 
 a = int(input("Enter the integer:"))
 print(int_to_romen(a))
